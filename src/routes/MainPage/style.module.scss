@@ -1,0 +1,31 @@
+.aside {
+    display: flex;
+    flex-direction: column;
+    background-color: #BDBDBD;
+    width: 152px;
+    align-items: flex-start;
+    padding: 25px;
+
+    span {
+        margin-bottom: 10px;
+       
+    }
+    button {
+        margin-bottom: 10px;
+    }
+}
+
+.container {
+    width: 565px;
+  
+    h1 {
+        font-size: 14px;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+    span:last-child {
+        display:block;
+        text-align: end;
+        font-size: 12px;
+    }
+}

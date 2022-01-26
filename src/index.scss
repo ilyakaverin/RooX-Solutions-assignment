@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("./Fonts//Roboto/Roboto-Regular.ttf") format("ttf");
+  }
+$buttonColor: #4B51EF;
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+#app {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:50px
+}
+button {
+    border:none;
+    background-color: $buttonColor;
+    outline:0;
+    color:#FFFFFF;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+    font-weight: normal;
+    font-style: normal;
+    cursor: pointer;
+}
+button:active {
+    transform: translateY(4px);
+}
