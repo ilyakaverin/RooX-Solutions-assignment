@@ -4,7 +4,6 @@
   "description": "SPA with React 17/ React Router v6/ parcel bundler",
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel",
@@ -30,6 +29,7 @@
     "prettier": "2.5.1"
   },
   "dependencies": {
+    "@swc/helpers": "^0.3.2",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

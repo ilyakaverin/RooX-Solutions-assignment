@@ -1,4 +1,3 @@
-import * as style from "./App.module.scss";
 import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
