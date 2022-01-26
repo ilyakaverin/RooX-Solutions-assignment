@@ -40,7 +40,7 @@ const UserPage = ({ users }:any) => {
         <h1>Профиль пользователя</h1>
         <button onClick={handleClick}>Редактировать</button>
       </section>
-      <form onSubmit={handleSubmit} className={style.container}>
+      <form onSubmit={(event:React.FormEvent<HTMLInputElement>) => handleSubmit(event)} className={style.container}>
         <div
           className={cn(style.inputContainer, { [style.enabled]: editMode })}
         >
@@ -165,6 +165,7 @@ const UserPage = ({ users }:any) => {
         <button
           className={cn(style.button, { [style.disabled]: editMode })}
           disabled={editMode}
+          
         >
           Отправить
         </button>
