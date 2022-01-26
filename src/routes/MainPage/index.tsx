@@ -2,19 +2,26 @@ import { useRef, useEffect } from "react";
 import * as style from "./style.module.scss";
 import UserCard from "../../components/UserCard";
 
-const MainPage = ({ users, filter }) => {
-  const userArray = Object.values(users);
-  const ref = useRef(window);
-  interface User {
+
+interface User {
     name: string;
     id: number;
     address: {
-      city: string;
+      city: any;
     };
     company: {
-      name: string;
+      name: any;
     };
   }
+  interface Users {
+    users: User,
+    filter: Function
+}
+
+const MainPage = ({ users, filter }:Users) => {
+
+  const userArray = Object.values(users);
+  const ref = useRef(window);
 
   useEffect(() => {
     ref.current.scrollTo(0, 0);
@@ -36,7 +43,7 @@ const MainPage = ({ users, filter }) => {
             <UserCard
               key={index}
               name={user.name}
-              adress={user.address.city}
+              address={user.address.city}
               company={user.company.name}
               id={user.id}
             />

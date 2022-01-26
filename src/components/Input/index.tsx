@@ -1,5 +1,6 @@
 import React from "react";
 import * as style from "./style.module.scss";
+import { capitalizeFirstLetter } from '../../service';
 
 interface Input {
   value: string;
@@ -10,9 +11,7 @@ interface Input {
 }
 
 const Input = ({ value, onChange, name, readOnly, type }: Input) => {
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+ 
 
   return (
     <div className={style.container}>

@@ -5,17 +5,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./routes/MainPage";
 import UserPage from "./routes/UserPage";
 
+interface State {
+    isLoading: boolean,
+    data: any
+}
+
 const App = () => {
-  const [users, setUsers] = useState({
+  const [users, setUsers] = useState<State>({
     isLoading: false,
     data: [],
   });
+  
 
-  const handleClickFilter = (array, option) => {
+  const handleClickFilter = (array:Array<object>, option:string) => {
     const copy = [...array];
 
-    const getProperty = (obj, path) =>
-      path.split(`.`).reduce((nested, key) => nested && nested[key], obj);
+    const getProperty = (obj:object, path:string) =>
+      path.split(`.`).reduce((nested:any, key) => nested && nested[key], obj);
     const result = copy.sort((a, b) =>
       getProperty(a, option) > getProperty(b, option)
         ? 1
@@ -23,7 +29,7 @@ const App = () => {
         ? -1
         : 0
     );
-    setUsers((prevState) => ({
+    setUsers((prevState:State) => ({
       ...prevState,
       data: result,
     }));

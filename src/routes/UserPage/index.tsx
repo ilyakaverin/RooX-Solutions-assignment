@@ -6,18 +6,29 @@ import TextArea from "../../components/TextArea";
 import * as style from "./style.module.scss";
 import cn from "classnames";
 
-const UserPage = ({ users }) => {
+interface State {
+    address: object[];
+    isLoading: boolean,
+    data: object[]
+    
+}
+interface User {
+    id: string
+}
+
+
+
+const UserPage = ({ users }:any) => {
   const { storyId: id } = useParams();
-  const [user] = users.filter((i) => i.id == id);
+  const [user] = users.filter((i:User) => i.id == id);
   const [data, setData] = useState(user);
   const [editMode, setEditMode] = useState(true);
   const ref = useRef(window);
   useEffect(() => {
     ref.current.scrollTo(0, 0);
   }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event:React.FormEvent<HTMLInputElement>) => {
+    event.preventDefault();
     console.log(data);
   };
   const handleClick = () => {
@@ -38,8 +49,8 @@ const UserPage = ({ users }) => {
             value={data?.name}
             name="name"
             type="text"
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 name: event.target.value,
               }))
@@ -50,8 +61,8 @@ const UserPage = ({ users }) => {
             value={data?.username}
             name="username"
             type="text"
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 username: event.target.value,
               }))
@@ -62,8 +73,8 @@ const UserPage = ({ users }) => {
             value={data?.email}
             name="email"
             type="email"
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 email: event.target.value,
               }))
@@ -75,7 +86,7 @@ const UserPage = ({ users }) => {
             name="street"
             type="text"
             onChange={(event: React.FormEvent<HTMLInputElement>) =>
-              setData((prevState) => ({
+              setData((prevState:State) => ({
                 ...prevState,
                 address: {
                   ...prevState.address,
@@ -89,8 +100,8 @@ const UserPage = ({ users }) => {
             value={data?.address?.city}
             name="city"
             type="text"
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 address: {
                   ...prevState.address,
@@ -104,8 +115,8 @@ const UserPage = ({ users }) => {
             value={data?.address?.zipcode}
             name="zipcode"
             type="text"
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 address: {
                   ...prevState.address,
@@ -119,8 +130,8 @@ const UserPage = ({ users }) => {
             value={data?.phone}
             name="phone"
             type="tel"
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 phone: event.target.value,
               }))
@@ -131,8 +142,8 @@ const UserPage = ({ users }) => {
             value={data?.website}
             type="url"
             name="website"
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 website: event.target.value,
               }))
@@ -142,8 +153,8 @@ const UserPage = ({ users }) => {
             readOnly={editMode}
             name="Comment"
             value={undefined}
-            onChange={(event) =>
-              setData((prevState) => ({
+            onChange={(event:React.FormEvent<HTMLInputElement>) =>
+              setData((prevState:State) => ({
                 ...prevState,
                 comment: event.target.value,
               }))
