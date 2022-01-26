@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
@@ -23,6 +23,7 @@ const UserPage = ({ users }:any) => {
   const [user] = users.filter((i:User) => i.id == id);
   const [data, setData] = useState(user);
   const [editMode, setEditMode] = useState(true);
+  const navigate = useNavigate();
   const ref = useRef(window);
   useEffect(() => {
     ref.current.scrollTo(0, 0);
@@ -34,13 +35,19 @@ const UserPage = ({ users }:any) => {
   const handleClick = () => {
     setEditMode((prevState) => !prevState);
   };
+  const handleBack = () => {
+      navigate('/')
+  }
   return (
     <div>
       <section className={style.section}>
         <h1>Профиль пользователя</h1>
-        <button onClick={handleClick}>Редактировать</button>
+        <div className={style.buttons}>
+        <button onClick={() => handleClick()}>Редактировать</button>
+        <button onClick={() => handleBack()}>Назад</button>
+        </div>
       </section>
-      <form onSubmit={(event:React.FormEvent<HTMLInputElement>) => handleSubmit(event)} className={style.container}>
+      <form onSubmit={(event:any) => handleSubmit(event)} className={style.container}>
         <div
           className={cn(style.inputContainer, { [style.enabled]: editMode })}
         >
@@ -152,7 +159,7 @@ const UserPage = ({ users }:any) => {
           <TextArea
             readOnly={editMode}
             name="Comment"
-            value={undefined}
+            value={''}
             onChange={(event:React.FormEvent<HTMLInputElement>) =>
               setData((prevState:State) => ({
                 ...prevState,
@@ -165,6 +172,7 @@ const UserPage = ({ users }:any) => {
         <button
           className={cn(style.button, { [style.disabled]: editMode })}
           disabled={editMode}
+          type="submit"
           
         >
           Отправить

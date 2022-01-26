@@ -44,10 +44,6 @@ const App = () => {
       const result = await fetch(
         "https://jsonplaceholder.typicode.com/users"
       ).then((res) => res.json());
-      // const normalised = result.reduce((acc, item) => {
-      //    acc[item.id] = item;
-      //    return acc
-      // },{})
       setUsers({
         isLoading: false,
         data: result,
