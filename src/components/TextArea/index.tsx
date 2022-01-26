@@ -1,6 +1,6 @@
 import React from "react";
 import * as style from "./style.module.scss";
-import { capitalizeFirstLetter } from '../../service'
+import { capitalizeFirstLetter } from "../../service";
 
 interface Input {
   value: string;
@@ -10,8 +10,6 @@ interface Input {
 }
 
 const TextArea = ({ value, onChange, name, readOnly }: Input) => {
-  
-
   return (
     <div className={style.container}>
       <label htmlFor={name}>{capitalizeFirstLetter(name)}</label>

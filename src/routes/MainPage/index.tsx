@@ -2,24 +2,22 @@ import { useRef, useEffect } from "react";
 import * as style from "./style.module.scss";
 import UserCard from "../../components/UserCard";
 
-
 interface User {
-    name: string;
-    id: number;
-    address: {
-      city: any;
-    };
-    company: {
-      name: any;
-    };
-  }
-  interface Users {
-    users: User,
-    filter: Function
+  name: string;
+  id: number;
+  address: {
+    city: any;
+  };
+  company: {
+    name: any;
+  };
+}
+interface Users {
+  users: User;
+  filter: Function;
 }
 
-const MainPage = ({ users, filter }:Users) => {
-
+const MainPage = ({ users, filter }: Users) => {
   const userArray = Object.values(users);
   const ref = useRef(window);
 
