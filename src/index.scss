@@ -2,7 +2,8 @@
   font-family: "Roboto";
   src: url("./Fonts//Roboto/Roboto-Regular.ttf") format("ttf");
 }
-$buttonColor: #4b51ef;
+$background-color: #4b51ef;
+$button-color: #ffffff;
 
 body {
   font-family: "Roboto", sans-serif;
@@ -15,9 +16,9 @@ body {
 }
 button {
   border: none;
-  background-color: $buttonColor;
+  background-color: $background-color;
   outline: 0;
-  color: #ffffff;
+  color: $button-color;
   border-radius: 5px;
   font-size: 12px;
   padding: 0.5rem 1rem;

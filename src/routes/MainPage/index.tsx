@@ -1,20 +1,11 @@
 import { useRef, useEffect } from "react";
 import * as style from "./style.module.scss";
 import UserCard from "../../components/UserCard";
+import { User } from "../../../interfaces";
 
-interface User {
-  name: string;
-  id: number;
-  address: {
-    city: any;
-  };
-  company: {
-    name: any;
-  };
-}
 interface Users {
-  users: User;
-  filter: Function;
+  users: Array<User>;
+  filter: (array: Array<User>, option: string) => void;
 }
 
 const MainPage = ({ users, filter }: Users) => {
@@ -41,8 +32,8 @@ const MainPage = ({ users, filter }: Users) => {
             <UserCard
               key={index}
               name={user.name}
-              address={user.address.city}
-              company={user.company.name}
+              city={user.address.city}
+              companyName={user.company.name}
               id={user.id}
             />
           ))}

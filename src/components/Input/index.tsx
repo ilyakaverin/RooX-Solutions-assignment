@@ -1,14 +1,7 @@
 import React from "react";
 import * as style from "./style.module.scss";
 import { capitalizeFirstLetter } from "../../service";
-
-interface Input {
-  value: string;
-  onChange: any;
-  name: string;
-  readOnly: boolean;
-  type?: string;
-}
+import { Input } from "../../../interfaces";
 
 const Input = ({ value, onChange, name, readOnly, type }: Input) => {
   return (

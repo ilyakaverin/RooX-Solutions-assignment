@@ -1,13 +1,7 @@
 import React from "react";
 import * as style from "./style.module.scss";
 import { capitalizeFirstLetter } from "../../service";
-
-interface Input {
-  value: string;
-  onChange: any;
-  name: string;
-  readOnly: boolean;
-}
+import { Input } from "../../../interfaces";
 
 const TextArea = ({ value, onChange, name, readOnly }: Input) => {
   return (

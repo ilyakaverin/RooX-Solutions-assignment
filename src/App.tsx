@@ -1,25 +1,21 @@
-import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./routes/MainPage";
 import UserPage from "./routes/UserPage";
-
-interface State {
-  isLoading: boolean;
-  data: any;
-}
+import Loader from "./components/Loader";
+import { User, State } from "../interfaces";
 
 const App = () => {
   const [users, setUsers] = useState<State>({
     isLoading: false,
     data: [],
   });
-
-  const handleClickFilter = (array: Array<object>, option: string) => {
+  const handleClickFilter = (array: Array<User>, option: string) => {
     const copy = [...array];
 
-    const getProperty = (obj: object, path: string) =>
+    const getProperty = (obj: User, path: string) =>
       path.split(`.`).reduce((nested: any, key) => nested && nested[key], obj);
+
     const result = copy.sort((a, b) =>
       getProperty(a, option) > getProperty(b, option)
         ? 1
@@ -34,7 +30,7 @@ const App = () => {
   };
   useEffect(() => {
     const getUsers = async () => {
-      setUsers((prevState) => ({
+      setUsers((prevState: State) => ({
         ...prevState,
         isLoading: true,
       }));

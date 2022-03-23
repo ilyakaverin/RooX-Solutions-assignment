@@ -1,6 +1,6 @@
 import * as style from "./style.module.scss";
 
 const Loader = () => {
-  return <>'...Loading'</>;
+  return <div className={style.loader}></div>;
 };
 export default Loader;
