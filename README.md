@@ -1,5 +1,7 @@
 # RooX-Solution-assignment
 
+![image](./assets/roox.png)
+
 ```
 npm install
 ```
