@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { User, State } from "./interfaces";
+import { getProperty } from './service';
 import MainPage from "./routes/MainPage";
 import UserPage from "./routes/UserPage";
 import Loader from "./components/Loader";
-import { User, State } from "../interfaces";
+
 
 const App = () => {
   const [users, setUsers] = useState<State>({
@@ -12,10 +14,6 @@ const App = () => {
   });
   const handleClickFilter = (array: Array<User>, option: string) => {
     const copy = [...array];
-
-    const getProperty = (obj: User, path: string) =>
-      path.split(`.`).reduce((nested: any, key) => nested && nested[key], obj);
-
     const result = copy.sort((a, b) =>
       getProperty(a, option) > getProperty(b, option)
         ? 1
@@ -35,12 +33,12 @@ const App = () => {
         isLoading: true,
       }));
 
-      const result = await fetch(
+      const userData= await fetch(
         "https://jsonplaceholder.typicode.com/users"
       ).then((res) => res.json());
       setUsers({
         isLoading: false,
-        data: result,
+        data: userData,
       });
     };
     getUsers();
