@@ -41,7 +41,7 @@ const UserPage = ({ users }: Users) => {
         </div>
       </section>
       <form
-        onSubmit={(event: any) => handleSubmit(event)}
+        onSubmit={(event: InputType) => handleSubmit(event)}
         className={style.container}
       >
         <div

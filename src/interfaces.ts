@@ -18,7 +18,8 @@ export interface Input {
 }
 export type InputType =
   | React.FormEvent<HTMLTextAreaElement>
-  | React.FormEvent<HTMLInputElement>;
+  | React.FormEvent<HTMLInputElement>
+  | React.FormEvent<HTMLFormElement>;
 
 export interface State {
   isLoading: boolean;
