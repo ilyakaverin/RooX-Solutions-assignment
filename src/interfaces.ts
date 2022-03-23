@@ -8,13 +8,18 @@ export interface User {
   username: string;
   website: string;
 }
+
 export interface Input {
   value: string;
-  onChange: () => void;
+  onChange: (event: InputType) => void;
   name: string;
   readOnly: boolean;
   type?: string;
 }
+export type InputType =
+  | React.FormEvent<HTMLTextAreaElement>
+  | React.FormEvent<HTMLInputElement>;
+
 export interface State {
   isLoading: boolean;
   data: Array<User>;
@@ -32,6 +37,7 @@ interface Address {
   };
   street: string;
   suite: string;
+  zipcode: string;
 }
 interface Company {
   [props: string]: string;

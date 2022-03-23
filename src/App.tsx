@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { User, State } from "./interfaces";
-import { getProperty } from './service';
+import { getProperty } from "./service";
 import MainPage from "./routes/MainPage";
 import UserPage from "./routes/UserPage";
 import Loader from "./components/Loader";
-
 
 const App = () => {
   const [users, setUsers] = useState<State>({
@@ -33,7 +32,7 @@ const App = () => {
         isLoading: true,
       }));
 
-      const userData= await fetch(
+      const userData = await fetch(
         "https://jsonplaceholder.typicode.com/users"
       ).then((res) => res.json());
       setUsers({
